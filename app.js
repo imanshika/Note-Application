@@ -9,7 +9,7 @@ const passport = require('passport');
 
 
 const app = express();
-const PORT = 8001 || process.env.PORT;
+const PORT = 8000 || process.env.PORT;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
