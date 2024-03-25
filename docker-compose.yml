@@ -1,0 +1,41 @@
+version: '3.1'
+
+services: 
+  # MongoDB
+  my_mongodb:
+    container_name: my_mongodb_container
+    image: mongo:7.0
+    ports: 
+      - 2717:27017
+    environment:
+      - MONGO_INITDB_DATABASE=noteapp
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=itsnoteapp
+    restart: always
+    volumes: 
+      - mongo_db:/data/db
+    networks:
+      - internalnet
+  
+  # Node APP service
+  note_app: 
+    container_name: note_app_container
+    build: .
+    image: note_app_img
+    ports: 
+      - 8000:8000
+    environment:
+      PORT: 8000
+      MONGODB_URI: mongodb://my_mongodb:27017
+      DB_NAME: my_mongodb
+    depends_on:
+      - my_mongodb
+    networks:
+      - internalnet
+
+volumes: 
+  mongo_db: {}
+
+networks:
+  internalnet:
+    driver: bridge

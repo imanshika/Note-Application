@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+      <a href="/dashboard" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-primary text-decoration-none fw-bold fs-2">
+        Notes
+      </a>
+
+      <form class="nav col-12 col-md-auto flex-fill mb-2 justify-content-center mb-md-0" role="search" method="POST" action="/dashboard/search">
+        <input type="search" name="searchTerm" class="form-control border-primary" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">
+          Delete Account
+        </button>
+        <a href="/logout" type="button" class="btn btn-primary">Logout</a>
+      </div>
+    </header>
+  </div>
+
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">You are about to delete your Account</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            This will delete your Account<br/>
+            Are you sure?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+          <form action="/deleteAccount?_method=DELETE" method="POST" class="position-relative">
+            <button type="submit" class="btn btn-primary">Delete Account</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
