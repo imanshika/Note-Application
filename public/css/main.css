@@ -66,10 +66,3 @@ h1,h2,h3,h4,h5,h6{
     --bs-pagination-active-bg: var(--bs-primary-rgb);
     --bs-pagination-active-border-color: var(--bs-primary-rgb);
 }
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
